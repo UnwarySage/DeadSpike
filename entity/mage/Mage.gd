@@ -1,15 +1,18 @@
 extends RigidBody2D
 class_name Mage
 
+signal on_water_adjust
+
 export (PackedScene) var bolt_scene = null
 
 export var walk_force :float = 64
 export var cooldown_rate:float = 1
+export var max_water:float = 500 
 
 var stage = null
 var _controllable :bool = true
 var _spell_cooldown:float = 0
-
+var _present_water:float = max_water
 
 func _physics_process(delta):
 	#handling of movement
@@ -39,7 +42,7 @@ func _physics_process(delta):
 		$MageSprite/MageHand.visible= false
 	else:
 		$MageSprite/MageHand.visible = true
-	if(Input.is_action_pressed("player_cast_spell") and _spell_cooldown < 0):
+	if(Input.is_action_pressed("player_cast_spell") and _spell_cooldown < 0 and _present_water > 0):
 		cast_spell()
 		
 	else:
@@ -57,15 +60,29 @@ func cast_spell():
 	$MageSprite/MageHand.visible = true
 	$MageSprite/CastParticles.emitting = true
 	if(_controllable):
-		cast_spray(30,.7)
-#spells
-func cast_spray(amount:int, accuracy:float):
-	_spell_cooldown = 75
+		cast_spray()
+
+#spells--------------
+func cast_wave(amount:int, accuracy:float):
+	_spell_cooldown = 100
+	_present_water -= 100
 	for i in range(floor(amount/3)):
 		_shoot_bolt(.25,500,accuracy,1)
 		_shoot_bolt(.27,500,accuracy,.9)
 		_shoot_bolt(.28,500,accuracy,.8)
 		yield(get_tree().create_timer(.0001), "timeout")
+
+
+func cast_raindrop():
+	_present_water -= 50
+	_spell_cooldown = 20
+	_shoot_bolt(1.2,700,0.05,15)
+
+func cast_spray():
+	_present_water -=5
+	_spell_cooldown = 2
+	_shoot_bolt(1.2,700,0.05,5)
+
 
 func _shoot_bolt(lifetime:float ,speed:float,accuracy:float, damage :int = 5):
 	#shoots a single bolt. Can be used solo, or as part of a larger spell
@@ -81,3 +98,10 @@ func _shoot_bolt(lifetime:float ,speed:float,accuracy:float, damage :int = 5):
 
 func get_mouse_heading():
 	return  (-1 * (global_position - get_viewport().get_mouse_position()).normalized())
+
+func _adjust_present_water(amount:float):
+	_present_water += amount
+	if(_present_water < 0):
+		_present_water = 0
+	emit_signal("on_water_adjust", _present_water)
+	
