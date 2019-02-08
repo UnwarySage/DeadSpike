@@ -5,16 +5,17 @@ export (PackedScene) var bolt_scene = null
 
 export var walk_force :float = 64
 
+var stage = null
 var _controllable :bool = true
 
 func _physics_process(delta):
 	#handling of movement
-	self.applied_force = Vector2()
+	applied_force = Vector2()
 	#check if we can control ourselves
 	if(_controllable):
 		var direction :Vector2 = Vector2()
 		if(Input.is_action_pressed("player_move_position")):
-			direction = self.global_position - get_viewport().get_mouse_position()
+			direction = global_position - get_viewport().get_mouse_position()
 			direction = direction.normalized() * -1
 			walk(direction)
 		#now for keyboard inputs
@@ -40,7 +41,7 @@ func _physics_process(delta):
 
 func walk(direction):
 	direction = direction.normalized()
-	self.applied_force = (walk_force * direction)
+	applied_force = (walk_force * direction)
 
 
 func cast_spell():
@@ -57,7 +58,7 @@ func _shoot_bolt():
 	
 	spawn.setup(get_mouse_heading())
 	#this should be area manager
-	self.get_parent().add_child(spawn)
+	get_parent().add_child(spawn)
 
 func get_mouse_heading():
-	return  (-1 * (self.global_position - get_viewport().get_mouse_position()).normalized())
+	return  (-1 * (global_position - get_viewport().get_mouse_position()).normalized())

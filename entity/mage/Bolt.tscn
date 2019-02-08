@@ -34,14 +34,21 @@ orbit_velocity_random = 0.0
 linear_accel = 4.55
 color = Color( 0.172549, 0.909804, 0.960784, 1 )
 
-[node name="BoltBody" type="KinematicBody2D"]
+[node name="BoltBody" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 12
+mass = 0.09
+contacts_reported = 2
+contact_monitor = true
 script = ExtResource( 1 )
-speed = 8.0
+lifetime = 1.0
+speed = 600.0
 
 [node name="BoltSprite" type="AnimatedSprite" parent="."]
+z_index = -2
+z_as_relative = false
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="BoltTimer" type="Timer" parent="."]
@@ -50,8 +57,9 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="BoltParticles" type="Particles2D" parent="."]
-rotation = 3.14159
+rotation = -3.14159
 fixed_fps = 60
 process_material = SubResource( 3 )
 
+[connection signal="body_entered" from="." to="." method="_on_BoltBody_body_entered"]
 [connection signal="timeout" from="BoltTimer" to="." method="_on_BoltTimer_timeout"]

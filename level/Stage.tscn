@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://level/Stage.gd" type="Script" id=1]
+[ext_resource path="res://entity/mage/Mage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entity/enemy/BarrelCactus/BarrelCactus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/SandBackground.png" type="Texture" id=4]
+[ext_resource path="res://level/StartMarker.tscn" type="PackedScene" id=5]
+
+[node name="Stage" type="Node2D"]
+z_index = -4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+stage_width = 1920
+stage_height = 1080
+player_scene = ExtResource( 2 )
+barrel_scene = ExtResource( 3 )
+
+[node name="SandBackground" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 1026.0
+margin_bottom = 602.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StartMarker" parent="." instance=ExtResource( 5 )]
+position = Vector2( 268, 188 )
+marked_type = 1
+
+[node name="StartMarker2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 821, 289 )
+marked_type = 3
+
+[node name="StartMarker3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 425, 384 )
+marked_type = 3
+
+[node name="StartMarker4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 682, 218 )
+marked_type = 3
+
+[node name="StartMarker5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 534, 273 )
+marked_type = 3
+
+[node name="StartMarker6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 534, 273 )
+

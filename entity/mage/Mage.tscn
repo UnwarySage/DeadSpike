@@ -23,11 +23,12 @@ color = Color( 0.172549, 0.909804, 0.960784, 1 )
 radius = 8.0
 
 [node name="MageBody" type="RigidBody2D"]
+z_as_relative = false
 collision_mask = 29
 linear_damp = 5.0
 script = ExtResource( 1 )
 bolt_scene = ExtResource( 2 )
-walk_force = 300.0
+walk_force = 600.0
 
 [node name="MageSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -36,6 +37,7 @@ script = ExtResource( 4 )
 [node name="CastParticles" type="Particles2D" parent="MageSprite"]
 position = Vector2( 4, 11 )
 rotation = 1.5708
+emitting = false
 amount = 500
 lifetime = 0.5
 local_coords = false

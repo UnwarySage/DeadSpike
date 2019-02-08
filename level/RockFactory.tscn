@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://level/RockFactory.gd" type="Script" id=1]
+[ext_resource path="res://art/Rock1.png" type="Texture" id=2]
+[ext_resource path="res://art/Rock2.png" type="Texture" id=3]
+[ext_resource path="res://art/Rock3.png" type="Texture" id=4]
+
+[node name="RockFactory" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="RockBody1" type="StaticBody2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RockSprite" type="Sprite" parent="RockBody1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockBody1"]
+polygon = PoolVector2Array( 3, 7, 9, 3, 7, 0, 1, 0, -2, 3, -5, 1, -9, 1, -12, 5, -4, 7 )
+
+[node name="RockBody2" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 28, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RockSprite" type="Sprite" parent="RockBody2"]
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockBody2"]
+polygon = PoolVector2Array( -8, 7, -7, -2, -3, -8, -1, -8, 3, -1, 3, 8 )
+
+[node name="RockBody3" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 54, -2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RockSprite" type="Sprite" parent="RockBody3"]
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockBody3"]
+polygon = PoolVector2Array( -8, 8, -8, 6, 1, 0, 7, 0, 14, 4, 14, 7, 11, 10, 8, 10, 4, 8 )
+

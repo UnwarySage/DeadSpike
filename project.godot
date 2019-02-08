@@ -10,17 +10,36 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "RigidBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://entity/enemy/Enemy.gd"
+}, {
+"base": "RigidBody2D",
 "class": "Mage",
 "language": "GDScript",
 "path": "res://entity/mage/Mage.gd"
+}, {
+"base": "Node2D",
+"class": "Stage",
+"language": "GDScript",
+"path": "res://level/Stage.gd"
+}, {
+"base": "Position2D",
+"class": "StartMarker",
+"language": "GDScript",
+"path": "res://level/StartMarker.gd"
 } ]
 _global_script_class_icons={
-"Mage": ""
+"Enemy": "",
+"Mage": "",
+"Stage": "",
+"StartMarker": ""
 }
 
 [application]
 
 config/name="DeadSpike"
+run/main_scene="res://level/Stage.tscn"
 boot_splash/image="res://GodotWildJam.png"
 config/icon="res://icon.png"
 
