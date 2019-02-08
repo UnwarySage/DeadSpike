@@ -3,7 +3,9 @@ extends RigidBody2D
 export var lifetime :float = 2
 export var speed :float = 64
 export var accuracy:float = 0.1
+export var damage_inflicted = 5
 export var heading :Vector2 = Vector2(0,1)
+
 
 func _ready():
 	look_at(to_global(heading))
@@ -24,5 +26,5 @@ func setup(inp_heading:Vector2, inp_speed:float = speed):
 
 func _on_BoltBody_body_entered(body):
 	if(body is Enemy):
-		body.damage(5)
+		body.damage(damage_inflicted)
 	queue_free()
