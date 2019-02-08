@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entity/mage/Mage.gd" type="Script" id=1]
+[ext_resource path="res://entity/mage/Bolt.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/mage5.png" type="Texture" id=3]
+[ext_resource path="res://entity/mage/MageSprite.gd" type="Script" id=4]
+[ext_resource path="res://art/mageHand6.png" type="Texture" id=5]
+
+[sub_resource type="ParticlesMaterial" id=2]
+
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 64.0
+initial_velocity_random = 0.51
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 6.33
+color = Color( 0.172549, 0.909804, 0.960784, 1 )
+
+[sub_resource type="CircleShape2D" id=1]
+
+radius = 8.0
+
+[node name="MageBody" type="RigidBody2D"]
+collision_mask = 29
+linear_damp = 5.0
+script = ExtResource( 1 )
+bolt_scene = ExtResource( 2 )
+walk_force = 300.0
+
+[node name="MageSprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="CastParticles" type="Particles2D" parent="MageSprite"]
+position = Vector2( 4, 11 )
+rotation = 1.5708
+amount = 500
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 2 )
+
+[node name="MageHand" type="Sprite" parent="MageSprite"]
+texture = ExtResource( 5 )
+
+[node name="CastPosition" type="Position2D" parent="MageSprite/MageHand"]
+position = Vector2( 4, 11 )
+
+[node name="MageShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+

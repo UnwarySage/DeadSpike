@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://entity/mage/Bolt.gd" type="Script" id=1]
+[ext_resource path="res://art/waterBolt2.png" type="Texture" id=2]
+[ext_resource path="res://art/waterBolt1.png" type="Texture" id=3]
+[ext_resource path="res://art/waterBolt3.png" type="Texture" id=4]
+[ext_resource path="res://art/waterBolt4.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+extents = Vector2( 5, 3 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+emission_shape = 1
+emission_sphere_radius = 2.45
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 136.36
+initial_velocity_random = 0.22
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 4.55
+color = Color( 0.172549, 0.909804, 0.960784, 1 )
+
+[node name="BoltBody" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource( 1 )
+speed = 8.0
+
+[node name="BoltSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+
+[node name="BoltTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="BoltParticles" type="Particles2D" parent="."]
+rotation = 3.14159
+fixed_fps = 60
+process_material = SubResource( 3 )
+
+[connection signal="timeout" from="BoltTimer" to="." method="_on_BoltTimer_timeout"]
