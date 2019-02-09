@@ -32,5 +32,9 @@ shape = SubResource( 1 )
 
 [node name="ShotTimer" type="Timer" parent="."]
 
+[node name="SalvoTimer" type="Timer" parent="."]
+wait_time = 0.01
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
+[connection signal="timeout" from="SalvoTimer" to="." method="_on_ShotTimer_timeout"]

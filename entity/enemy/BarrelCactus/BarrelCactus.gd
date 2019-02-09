@@ -20,6 +20,7 @@ var _rooted:bool = false
 
 func _ready():
 	$ShotTimer.wait_time= 2
+	$SalvoTimer.wait_time =0.01
 
 
 func _physics_process(delta):
@@ -38,11 +39,13 @@ func _physics_process(delta):
 func fire_salvo(count:int):
 	for i in range(count):
 		_shoot_spine(stage.player.global_position)
-		yield(get_tree().create_timer(0.01),"timeout")
+		#$SalvoTimer.start()
+		#yield($SalvoTimer,"timeout")
+		#yield(get_tree().create_timer(0.01),"timeout")
 
 func _shoot_spine(target_position):
 	var spawn=spine_scene.instance()
-	spawn.setup(stage.player.global_position- global_position,spine_speed)
+	spawn.setup(stage.player.global_position- global_position,spine_speed + randf() * 30)
 	spawn.accuracy = spine_accuracy
 	spawn.lifetime = spine_life
 	spawn.position = position
