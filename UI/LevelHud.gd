@@ -19,7 +19,7 @@ func _ready():
 
 func adjust_water_level(inp_level):
 	water_bar.value = inp_level
-
+	
 
 func adjust_health_level(inp_level):
 	health_bar.value = inp_level
