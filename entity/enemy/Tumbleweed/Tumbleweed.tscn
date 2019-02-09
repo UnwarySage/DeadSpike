@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entity/enemy/Tumbleweed/Tumbleweed.gd" type="Script" id=1]
+[ext_resource path="res://art/Tumbleweed.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+radius = 14.0
+
+[node name="Tumbleweed" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 11
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 1 )
+max_health = 10
+
+[node name="TumbleweedSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="TumbleweedShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

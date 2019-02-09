@@ -10,6 +10,7 @@ export (PackedScene) var hud_scene
 export (PackedScene) var oasis_scene
 
 export (PackedScene) var barrel_scene
+export (PackedScene) var tumbleweed_scene
 
 var player :Mage = null
 
@@ -35,7 +36,7 @@ func _spawn_all(list_of_markers):
 			_load_player(mark.position)
 			player_spawned = true
 		elif (mark.marked_type == mark.types["ENEMY"]):
-			_spawn_enemy(mark.position,barrel_scene)
+			_spawn_enemy(mark.position,tumbleweed_scene)
 		elif (mark.marked_type == mark.types["OASIS"]):
 			_generic_spawn(mark.position,oasis_scene)
 

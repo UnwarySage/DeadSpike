@@ -38,6 +38,7 @@ color = Color( 0.172549, 0.909804, 0.960784, 1 )
 collision_layer = 2
 collision_mask = 12
 mass = 0.09
+continuous_cd = 2
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 1 )
