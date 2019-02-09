@@ -5,7 +5,7 @@ extends "res://entity/enemy/Enemy.gd"
 var stage = null
 export var contact_damage:float = 15
 export var spine_damage:float = 10
-export var root_range:float = 250
+export var root_range:float = 75
 export var spine_range:float = 250
 export var spine_count:int = 4
 export var spine_life:float = 1
@@ -30,6 +30,7 @@ func _physics_process(delta):
 				_rooted = true
 				linear_velocity = Vector2()
 				mode = RigidBody2D.MODE_STATIC
+				armor_value = 2
 				$ShotTimer.start()
 			
 

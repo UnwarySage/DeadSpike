@@ -68,7 +68,7 @@ func cast_spell():
 	$MageSprite/MageHand.visible = true
 	$MageSprite/CastParticles.emitting = true
 	if(_controllable):
-		cast_spray()
+		cast_raindrop()
 
 #spells--------------
 func cast_wave(amount:int, accuracy:float):
@@ -84,7 +84,7 @@ func cast_wave(amount:int, accuracy:float):
 func cast_raindrop():
 	_adjust_present_water(-50)
 	_spell_cooldown = 20
-	_shoot_bolt(1.2,700,0.05,15)
+	_shoot_bolt(1.2,700,0.001,30)
 
 
 func cast_spray():

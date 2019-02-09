@@ -17,7 +17,8 @@ contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 1 )
 max_health = 50
-armor_value = 2
+spine_count = 6
+spine_accuracy = 0.2
 spine_scene = ExtResource( 2 )
 
 [node name="BarrelSprite" type="Sprite" parent="."]
