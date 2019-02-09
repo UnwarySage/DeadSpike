@@ -7,6 +7,7 @@ export var stage_height :int
 
 export (PackedScene) var player_scene
 export (PackedScene) var hud_scene
+export (PackedScene) var oasis_scene
 
 export (PackedScene) var barrel_scene
 
@@ -26,6 +27,7 @@ func _get_all_markers():
 			marker_list.append(child)
 	return marker_list
 
+
 func _spawn_all(list_of_markers):
 	var player_spawned :bool = false
 	for mark in list_of_markers:
@@ -33,7 +35,9 @@ func _spawn_all(list_of_markers):
 			_load_player(mark.position)
 			player_spawned = true
 		elif (mark.marked_type == mark.types["ENEMY"]):
-				_spawn_enemy(mark.position,barrel_scene)
+			_spawn_enemy(mark.position,barrel_scene)
+		elif (mark.marked_type == mark.types["OASIS"]):
+			_generic_spawn(mark.position,oasis_scene)
 
 
 func _load_player(spawn_position :Vector2):
@@ -48,6 +52,14 @@ func _load_hud():
 	var spawn = hud_scene.instance()
 	spawn.stage = self
 	add_child(spawn)
+
+
+func _generic_spawn(spawn_position :Vector2, type :PackedScene):
+	var spawn = type.instance()
+	spawn.position = spawn_position
+	spawn.stage = self
+	add_child(spawn)
+
 
 func _spawn_enemy(spawn_position :Vector2, type :PackedScene):
 	var spawn :Enemy = type.instance()

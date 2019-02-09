@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entity/Oasis/Oasis.gd" type="Script" id=1]
+[ext_resource path="res://entity/Oasis/WaterOrb.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/Oasis.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+radius = 87.8728
+
+[node name="Oasis" type="Node2D"]
+script = ExtResource( 1 )
+orb_scene = ExtResource( 2 )
+
+[node name="OasisPickUpRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OasisPickUpRadius"]
+shape = SubResource( 1 )
+
+[node name="OasisSprite" type="Sprite" parent="."]
+position = Vector2( 0.166084, -3.32167 )
+texture = ExtResource( 3 )
+
+[node name="OasisTimer" type="Timer" parent="."]
+
+[node name="OasisCollision" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="OasisShape" type="CollisionPolygon2D" parent="OasisCollision"]
+polygon = PoolVector2Array( -10, -8, -4, -13, 3, -15, 14, -15, 18, -10, 18, -3, 16, 4, 10, 11, -2, 20, -5, 20, -11, 14, -14, 14, -16, 11, -16, 9, -19, 6, -19, 3, -11, -4 )
+
+[connection signal="body_entered" from="OasisPickUpRadius" to="." method="_on_OasisPickUpRadius_body_entered"]
+[connection signal="body_exited" from="OasisPickUpRadius" to="." method="_on_OasisPickUpRadius_body_exited"]
+[connection signal="timeout" from="OasisTimer" to="." method="_on_OasisTimer_timeout"]

@@ -113,8 +113,7 @@ func get_mouse_heading():
 
 func _adjust_present_water(amount:float):
 	_present_water += amount
-	if(_present_water < 0):
-		_present_water = 0
+	_present_water = clamp(_present_water,0,max_water)
 	emit_signal("on_water_adjust", _present_water)
 
 func _adjust_present_health(amount:float):

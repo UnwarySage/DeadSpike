@@ -43,10 +43,6 @@ run/main_scene="res://level/Stage.tscn"
 boot_splash/image="res://GodotWildJam.png"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/fullscreen=true
-
 [input]
 
 player_move_position={
@@ -92,6 +88,8 @@ player_cast_spell={
 2d_physics/layer_3="terrain"
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="enemy_projectiles"
+2d_physics/layer_6="enemy_only_terrain"
+2d_physics/layer_7="consumables"
 
 [physics]
 
