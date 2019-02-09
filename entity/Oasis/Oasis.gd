@@ -16,6 +16,8 @@ func spawn_orb():
 	spawn.target = stage.player
 	spawn.value = drop_value
 	spawn.global_position = global_position
+	spawn.position.x += randf() * 3 -1.5
+	spawn.position.y += randf() * 3 -1.5
 	stage.add_child(spawn)
 	
 

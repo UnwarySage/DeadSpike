@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entity/Oasis/WaterOrb.gd" type="Script" id=1]
 [ext_resource path="res://art/WaterPellet.png" type="Texture" id=2]
@@ -6,6 +6,17 @@
 [sub_resource type="CircleShape2D" id=1]
 
 radius = 6.14764
+
+[sub_resource type="ParticlesMaterial" id=2]
+
+emission_shape = 1
+emission_sphere_radius = 4.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.172549, 0.909804, 0.960784, 1 )
 
 [node name="WaterPellet" type="RigidBody2D"]
 collision_layer = 64
@@ -21,5 +32,10 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="WaterTrail" type="Particles2D" parent="."]
+amount = 150
+local_coords = false
+process_material = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
