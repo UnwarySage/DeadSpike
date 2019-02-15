@@ -1,4 +1,4 @@
-extends CenterContainer
+extends CanvasLayer
 
 var stage :Stage =null
 

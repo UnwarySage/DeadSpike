@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if(_controllable):
 		var direction :Vector2 = Vector2()
 		if(Input.is_action_pressed("player_move_position")):
-			direction = global_position - get_viewport().get_mouse_position()
+			direction =  global_position - get_global_mouse_position()
 			direction = direction.normalized() * -1
 			walk(direction)
 		#now for keyboard inputs
@@ -68,7 +68,7 @@ func cast_spell():
 	$MageSprite/MageHand.visible = true
 	$MageSprite/CastParticles.emitting = true
 	if(_controllable):
-		cast_wave()
+		cast_spray()
 
 #spells--------------
 func cast_wave():
@@ -111,7 +111,7 @@ func _shoot_bolt(lifetime:float ,speed:float,accuracy:float, damage :int = 5):
 #Internal functions
 
 func get_mouse_heading():
-	return  (-1 * (global_position - get_viewport().get_mouse_position()).normalized())
+	return  (-1 * (global_position - get_global_mouse_position()).normalized() )
 
 func _adjust_present_water(amount:float):
 	_present_water += amount
