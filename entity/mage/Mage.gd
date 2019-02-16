@@ -3,6 +3,7 @@ class_name Mage
 
 signal on_water_adjust
 signal on_health_adjust
+signal on_spell_change
 
 export (PackedScene) var bolt_scene = null
 
@@ -16,6 +17,7 @@ var _controllable :bool = true
 var _spell_cooldown:float = 0
 var _present_water:float = max_water
 var _present_health:float = max_water
+var _present_spell:int = 0
 
 func _physics_process(delta):
 	#handling of movement
@@ -47,10 +49,19 @@ func _physics_process(delta):
 		$MageSprite/MageHand.visible = true
 	if(Input.is_action_pressed("player_cast_spell") and _spell_cooldown < 0 and _present_water > 0):
 		cast_spell()
-		
 	else:
 		#make our hand invisible
 		$MageSprite/CastParticles.emitting = false
+	
+	#handle spell switching
+	if(Input.is_action_just_pressed("player_spell_down")):
+		_present_spell +=1
+		emit_signal("on_spell_change",_present_spell)
+	elif(Input.is_action_just_pressed("player_spell_up")):
+		_present_spell -=1
+		emit_signal("on_spell_change",_present_spell)
+	_present_spell = clamp(_present_spell,0,2)
+	
 
 
 func damage(inp_amount):
@@ -68,7 +79,13 @@ func cast_spell():
 	$MageSprite/MageHand.visible = true
 	$MageSprite/CastParticles.emitting = true
 	if(_controllable):
-		cast_spray()
+		match _present_spell:
+			0:
+				cast_wave()
+			1:
+				cast_raindrop()
+			2:
+				cast_spray()
 
 #spells--------------
 func cast_wave():
