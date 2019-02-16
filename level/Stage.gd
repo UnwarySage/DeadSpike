@@ -13,6 +13,7 @@ export (PackedScene) var barrel_scene
 export (PackedScene) var tumbleweed_scene
 
 var player :Mage = null
+var oasis = null
 
 func _ready():
 	#setup background
@@ -38,7 +39,8 @@ func _spawn_all(list_of_markers):
 		elif (mark.marked_type == mark.types["ENEMY"]):
 			_spawn_enemy(mark.position,barrel_scene)
 		elif (mark.marked_type == mark.types["OASIS"]):
-			_generic_spawn(mark.position,oasis_scene)
+			oasis = _generic_spawn(mark.position,oasis_scene)
+			
 
 
 func _load_player(spawn_position :Vector2):
@@ -60,7 +62,7 @@ func _generic_spawn(spawn_position :Vector2, type :PackedScene):
 	spawn.position = spawn_position
 	spawn.stage = self
 	add_child(spawn)
-
+	return spawn
 
 func _spawn_enemy(spawn_position :Vector2, type :PackedScene):
 	var spawn :Enemy = type.instance()

@@ -5,6 +5,7 @@ var stage :Stage =null
 onready var water_bar:TextureProgress = find_node("WaterBar",true)
 onready var health_bar:TextureProgress = find_node("HealthBar",true)
 onready var spell_icons:AnimatedSprite = find_node("SpellIcons",true)
+onready var compass:Position2D = find_node("CompassPivot",true)
 
 
 func _ready():
@@ -19,6 +20,10 @@ func _ready():
 	stage.player.connect("on_spell_change", self, "change_spell_icon")
 	print("HUD: Loaded")
 
+func _process(delta):
+	if(stage.player != null and stage.oasis != null):
+		var direction:Vector2 = stage.oasis.global_position - stage.player.global_position
+		compass.rotation = direction.angle()
 
 func adjust_water_level(inp_level):
 	water_bar.value = inp_level

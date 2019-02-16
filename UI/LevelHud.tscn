@@ -1,20 +1,21 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/LevelHud.gd" type="Script" id=1]
 [ext_resource path="res://art/WaterGaugeBase.png" type="Texture" id=2]
 [ext_resource path="res://art/WaterGaugeTop.png" type="Texture" id=3]
 [ext_resource path="res://art/WaterGaugeWater.png" type="Texture" id=4]
 [ext_resource path="res://art/HealthOrbFull.png" type="Texture" id=5]
-[ext_resource path="res://art/SpellIcons1.png" type="Texture" id=6]
-[ext_resource path="res://art/SpellIcons2.png" type="Texture" id=7]
-[ext_resource path="res://art/SpellIcons3.png" type="Texture" id=8]
-[ext_resource path="res://art/HealthGaugeTop.png" type="Texture" id=9]
-[ext_resource path="res://art/HealthGaugeBlood.png" type="Texture" id=10]
+[ext_resource path="res://art/IndicatorNeedle.png" type="Texture" id=6]
+[ext_resource path="res://art/SpellIcons1.png" type="Texture" id=7]
+[ext_resource path="res://art/SpellIcons2.png" type="Texture" id=8]
+[ext_resource path="res://art/SpellIcons3.png" type="Texture" id=9]
+[ext_resource path="res://art/HealthGaugeTop.png" type="Texture" id=10]
+[ext_resource path="res://art/HealthGaugeBlood.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -65,11 +66,18 @@ margin_bottom = 44.0
 texture = ExtResource( 5 )
 
 [node name="TextureRect2" type="TextureRect" parent="Container/VBoxContainer/CenterOrganization/OrbContainer"]
-visible = false
-margin_top = 30.0
+margin_top = 60.0
 margin_right = 32.0
-margin_bottom = 62.0
+margin_bottom = 92.0
 texture = ExtResource( 5 )
+
+[node name="CompassPivot" type="Position2D" parent="Container/VBoxContainer/CenterOrganization/OrbContainer/TextureRect2"]
+position = Vector2( 16, 16 )
+
+[node name="Sprite" type="Sprite" parent="Container/VBoxContainer/CenterOrganization/OrbContainer/TextureRect2/CompassPivot"]
+position = Vector2( 8, 0 )
+rotation = 1.5708
+texture = ExtResource( 6 )
 
 [node name="TextureRect3" type="TextureRect" parent="Container/VBoxContainer/CenterOrganization/OrbContainer"]
 margin_top = 96.0
@@ -87,8 +95,8 @@ margin_right = 104.0
 margin_bottom = 128.0
 value = 78.0
 texture_under = ExtResource( 2 )
-texture_over = ExtResource( 9 )
-texture_progress = ExtResource( 10 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
 fill_mode = 3
 
 [node name="Tween" type="Tween" parent="."]
