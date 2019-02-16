@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 0.143519, 0.842593, 1 )
+colors = PoolColorArray( 0.917647, 0.831373, 0.666667, 0, 0.917647, 0.831373, 0.666667, 1, 0.917647, 0.831373, 0.666667, 0.931818, 0.917647, 0.831373, 0.666667, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+emission_shape = 1
+emission_sphere_radius = 600.0
+flag_disable_z = true
+spread = 8.7
+gravity = Vector3( 100, -100, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+color_ramp = SubResource( 2 )
+
+[node name="SandParticles" type="Particles2D"]
+amount = 3000
+local_coords = false
+process_material = SubResource( 3 )
+

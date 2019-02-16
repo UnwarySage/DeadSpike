@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://level/Stage.gd" type="Script" id=1]
 [ext_resource path="res://entity/mage/Mage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/LevelHud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entity/Oasis/Oasis.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entity/enemy/BarrelCactus/BarrelCactus.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entity/enemy/Tumbleweed/Tumbleweed.tscn" type="PackedScene" id=6]
-[ext_resource path="res://art/SandBackground.png" type="Texture" id=7]
-[ext_resource path="res://level/StartMarker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://level/MonsterSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entity/enemy/BarrelCactus/BarrelCactus.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entity/enemy/Tumbleweed/Tumbleweed.tscn" type="PackedScene" id=7]
+[ext_resource path="res://art/SandBackground.png" type="Texture" id=8]
+[ext_resource path="res://level/StartMarker.tscn" type="PackedScene" id=9]
 
 [node name="Stage" type="Node2D"]
 z_index = -4
@@ -20,45 +21,26 @@ stage_height = 1080
 player_scene = ExtResource( 2 )
 hud_scene = ExtResource( 3 )
 oasis_scene = ExtResource( 4 )
-barrel_scene = ExtResource( 5 )
-tumbleweed_scene = ExtResource( 6 )
+spawner_scene = ExtResource( 5 )
+barrel_scene = ExtResource( 6 )
+tumbleweed_scene = ExtResource( 7 )
 
 [node name="SandBackground" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_right = 1026.0
-margin_bottom = 602.0
+margin_right = 2000.0
+margin_bottom = 2000.0
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 stretch_mode = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StartMarker" parent="." instance=ExtResource( 8 )]
-position = Vector2( 257, 265 )
-marked_type = 1
-
-[node name="StartMarker2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 821, 289 )
+[node name="StartMarker" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1000, 1000 )
 marked_type = 2
 
-[node name="StartMarker3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 425, 384 )
-marked_type = 4
-
-[node name="StartMarker4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 682, 218 )
-marked_type = 4
-
-[node name="StartMarker5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 534, 273 )
-marked_type = 4
-
-[node name="StartMarker6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 534, 273 )
-marked_type = 4
-
-[node name="StartMarker7" parent="." instance=ExtResource( 8 )]
-position = Vector2( 200, 300 )
-marked_type = 4
+[node name="StartMarker2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 999, 1161 )
+marked_type = 1
 

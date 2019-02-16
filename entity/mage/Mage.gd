@@ -56,11 +56,13 @@ func _physics_process(delta):
 	#handle spell switching
 	if(Input.is_action_just_pressed("player_spell_down")):
 		_present_spell +=1
+		_present_spell = _present_spell % 3
 		emit_signal("on_spell_change",_present_spell)
 	elif(Input.is_action_just_pressed("player_spell_up")):
 		_present_spell -=1
+		_present_spell = _present_spell % 3
 		emit_signal("on_spell_change",_present_spell)
-	_present_spell = clamp(_present_spell,0,2)
+
 	
 
 
