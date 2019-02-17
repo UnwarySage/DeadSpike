@@ -1,6 +1,7 @@
 extends Node2D
 class_name Stage
 #Stage handles all the level related information, and generating the level
+signal game_over
 
 export var stage_width :int
 export var stage_height :int

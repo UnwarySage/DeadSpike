@@ -96,9 +96,9 @@ func cast_wave():
 	_spell_cooldown = 75
 	_adjust_present_water(-100)
 	for i in range(floor(amount/3)):
-		_shoot_bolt(.25,500,accuracy,1)
-		_shoot_bolt(.27,500,accuracy,.9)
-		_shoot_bolt(.28,500,accuracy,.8)
+		_shoot_bolt(.25,500,accuracy,10)
+		_shoot_bolt(.27,500,accuracy,10)
+		_shoot_bolt(.28,500,accuracy,10)
 		yield(get_tree().create_timer(.0001), "timeout")
 
 
@@ -144,6 +144,8 @@ func _adjust_present_health(amount:float):
 	if(_present_health < 0):
 		_present_water = 0
 		_controllable = false
+		#yield(get_tree().create_timer(1.5), "timeout")
+		stage.emit_signal("game_over")
 	emit_signal("on_health_adjust", _present_health)
 
 func show_damage():

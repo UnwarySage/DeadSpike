@@ -8,11 +8,14 @@ var stage:Stage = null
 
 
 
-func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	spawn_creature()
+
 	
 func spawn_creature():
 	var spawn = monster.instance()
 	spawn.global_position = global_position
 	spawn.stage = stage
 	stage.add_child(spawn)
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	spawn_creature()
