@@ -5,7 +5,6 @@ var menu_active:bool = true
 export (PackedScene) var level_scene
 
 onready var playbutton:Button = find_node("PlayButton",true)
-onready var creditbutton:Button = find_node("CreditsButton",true)
 onready var exitbutton:Button = find_node("ExitButton",true)
 
 var _stage
@@ -13,7 +12,6 @@ var _stage
 func _ready():
 	print("MAIN MENU LOADED")
 	playbutton.connect("button_down", self, "start_game")
-	creditbutton.connect("button_down",self,"show_credits")
 	exitbutton.connect("button_down",self,"exit_game")
 	$AudioStreamPlayer.play()
 
@@ -35,6 +33,9 @@ func show_menu():
 
 func exit_game():
 	get_tree().quit()
+
+
+	
 
 
 func _on_AudioStreamPlayer_finished():

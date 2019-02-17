@@ -53,6 +53,7 @@ I shall rest awhile at this spring, and hope the power I draw
 from it shall see me through the night."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Journal"]
+visible = false
 margin_top = 86.0
 margin_right = 404.0
 margin_bottom = 106.0
@@ -75,9 +76,9 @@ margin_bottom = 396.0
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 120.0
+margin_top = 132.0
 margin_right = 147.0
-margin_bottom = 152.0
+margin_bottom = 164.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 57.0
@@ -89,27 +90,21 @@ stretch_mode = 6
 [node name="SandParticles" parent="HBoxContainer/VBoxContainer/CenterContainer/TextureRect" instance=ExtResource( 5 )]
 
 [node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 156.0
+margin_top = 168.0
 margin_right = 147.0
-margin_bottom = 176.0
+margin_bottom = 188.0
 text = "Play Game"
 
-[node name="CreditsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 180.0
-margin_right = 147.0
-margin_bottom = 200.0
-text = "Credits"
-
 [node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 204.0
+margin_top = 192.0
 margin_right = 147.0
-margin_bottom = 224.0
+margin_bottom = 212.0
 text = "Exit"
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 228.0
+margin_top = 216.0
 margin_right = 147.0
-margin_bottom = 276.0
+margin_bottom = 264.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "A game by UnwarySage
 Music by AnaNymus

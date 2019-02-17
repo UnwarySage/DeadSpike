@@ -26,7 +26,6 @@ func _ready():
 	#setup background
 	#$SandBackground.set_end(Vector2(stage_width,stage_height))
 	var marker_list = _get_all_markers()
-	print(_enemy_list)
 	_spawn_all(marker_list)
 	_load_hud()
 
