@@ -39,18 +39,26 @@ margin_bottom = 396.0
 
 [node name="Journal" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 4.0
-margin_right = 408.0
+margin_right = 397.0
 margin_bottom = 396.0
 
 [node name="RichTextLabel" type="Label" parent="HBoxContainer/Journal"]
-margin_right = 404.0
-margin_bottom = 82.0
+margin_right = 393.0
+margin_bottom = 218.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "In all my travels, I have never visited such a desolate place. 
 The ground burns ones feet, the sun rages from the heavens. 
-Is it any surprise at all that that the flora is so easily corrupted?
+Is it any surprise at all that the flora is so easily corrupted?
+So easily turned towards evil, when all that is good
+and sweet is burned away by the hateful sun?
+
+Waters domain grows weak here, and my magic feeble.
 I shall rest awhile at this spring, and hope the power I draw
-from it shall see me through the night."
+from it shall see me through the night.
+
+I am not optimistic.
+
+Z'lan, Hydromancer"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Journal"]
 visible = false
@@ -70,8 +78,8 @@ margin_bottom = 20.0
 text = "next"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 412.0
-margin_right = 559.0
+margin_left = 401.0
+margin_right = 548.0
 margin_bottom = 396.0
 alignment = 1
 
@@ -111,14 +119,14 @@ Music by AnaNymus
 Made in two days"
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 563.0
-margin_right = 563.0
+margin_left = 552.0
+margin_right = 552.0
 margin_bottom = 396.0
 
 [node name="Controls" type="Label" parent="HBoxContainer"]
-margin_left = 567.0
+margin_left = 556.0
 margin_top = 123.0
-margin_right = 796.0
+margin_right = 785.0
 margin_bottom = 273.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Controls:
